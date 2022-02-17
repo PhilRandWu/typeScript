@@ -3,7 +3,7 @@
  * @Author: PhilRandWu
  * @Github: https://github/PhilRandWu
  * @Date: 2022-02-15 20:32:48
- * @LastEditTime: 2022-02-16 19:44:47
+ * @LastEditTime: 2022-02-17 10:27:20
  * @LastEditors: PhilRandWu
  */
 
@@ -55,3 +55,29 @@ let u: User = {
 function getUser(): User[] {
   return [];
 }
+
+
+function sum (a: number, b: number):number;
+function sum(a: string, b: string):string;
+function sum (a: number | string, b: number | string): number | string {
+  if(typeof a === 'number' && typeof b === 'number') {
+    return a * b;
+  } else if(typeof a === 'string' && typeof b === 'string') {
+    return a + b;
+  }
+  throw new Error('Invalid');
+}
+
+const result = sum('1', '2');
+
+
+
+function addNum(a: number, b: number, c?: number): number {
+  if(c) {
+    return a + b + c;
+  }
+  return a + b;
+}
+
+console.log(addNum(1,2,3))
+console.log(addNum(1, 2))
