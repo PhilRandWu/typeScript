@@ -3,7 +3,7 @@
  * @Author: PhilRandWu
  * @Github: https://github/PhilRandWu
  * @Date: 2022-02-17 10:52:18
- * @LastEditTime: 2022-02-25 10:44:26
+ * @LastEditTime: 2022-02-25 11:02:20
  * @LastEditors: PhilRandWu
  */
 type colors = "♥️" | "♠️" | "♣️" | "♦️";
@@ -19,7 +19,7 @@ const pokeArr: pokeCard = [];
 
 function createPoke(): pokeCard {
   const pokes: pokeCard = [];
-  for (let i = 0; i < 13; i++) {
+  for (let i = 1; i <= 13; i++) {
     pokes.push({
       value: i,
       color: "♠️",
@@ -41,7 +41,7 @@ function createPoke(): pokeCard {
 }
 
 function printPoke(pokes: pokeCard): void {
-  const result = "\n";
+  let result = "\n";
   pokes.forEach((item) => {
     let str = item.color;
     if (item.value <= 10) {
@@ -53,6 +53,7 @@ function printPoke(pokes: pokeCard): void {
     } else if (item.value === 13) {
       str += "K";
     }
+    console.log(str);
     result + str + '\t';
   });
   console.log(result);
