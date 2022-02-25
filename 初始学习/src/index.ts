@@ -2,56 +2,61 @@
  * @Description:
  * @Author: PhilRandWu
  * @Github: https://github/PhilRandWu
- * @Date: 2022-02-15 20:32:48
- * @LastEditTime: 2022-02-16 19:44:47
+ * @Date: 2022-02-17 10:52:18
+ * @LastEditTime: 2022-02-25 10:44:26
  * @LastEditors: PhilRandWu
  */
+type colors = "♥️" | "♠️" | "♣️" | "♦️";
 
-let say: string = "hello";
-
-console.log("hehe！！！");
-function add(a: number, b: number) {
-  return a + b;
-}
-
-const num: number = add(1, 2);
-console.log(num);
-
-let a: null = null;
-
-let x: "1";
-x = "1"; // x 只能取 1
-
-let gender: "男" | "女";
-gender = "男";
-
-let arr: []; // arr 只能是空数组
-
-arr = [];
-
-let user: {
-  name: string;
-  age: number;
+type poke = {
+  value: number;
+  color: colors;
 };
 
+type pokeCard = poke[];
 
-type Gender = '男' | '女';
+const pokeArr: pokeCard = [];
 
-type User = {
-    name: string
-    age: number
-    gender: Gender
+function createPoke(): pokeCard {
+  const pokes: pokeCard = [];
+  for (let i = 0; i < 13; i++) {
+    pokes.push({
+      value: i,
+      color: "♠️",
+    });
+    pokes.push({
+      value: i,
+      color: "♣️",
+    });
+    pokes.push({
+      value: i,
+      color: "♥️",
+    });
+    pokes.push({
+      value: i,
+      color: "♦️",
+    });
+  }
+  return pokes;
 }
 
-let u: User = {
-  name: 'hehe',
-  age: 20,
-  gender: '男'
+function printPoke(pokes: pokeCard): void {
+  const result = "\n";
+  pokes.forEach((item) => {
+    let str = item.color;
+    if (item.value <= 10) {
+      str += item.value;
+    } else if (item.value === 11) {
+      str += "J";
+    } else if (item.value === 12) {
+      str += "Q";
+    } else if (item.value === 13) {
+      str += "K";
+    }
+    result + str + '\t';
+  });
+  console.log(result);
 }
 
-
-
-
-function getUser(): User[] {
-  return [];
-}
+const pokeCards = createPoke();
+printPoke(pokeCards);
