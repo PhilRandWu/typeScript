@@ -3,7 +3,7 @@
 		"nodemon": "^2.0.15"
 	},
 	"scripts": {
-		"dev": "watch ./src -e ts nodemon ts-node ./src/index.ts",
+		"dev": "nodemon --watch ./src -e ts --exec ts-node ./src/index.ts",
 		"build": "tsc"
 	}
 }
