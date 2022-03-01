@@ -3,11 +3,11 @@
  * @Author: PhilRandWu
  * @Github: https://github/PhilRandWu
  * @Date: 2022-02-25 16:07:17
- * @LastEditTime: 2022-02-25 16:10:57
+ * @LastEditTime: 2022-03-01 10:36:50
  * @LastEditors: PhilRandWu
  */
 
-import { pokerCard, colors, value } from "./constraint";
+import { pokerCard, colors, value, Card, joker, poker } from "./constraint";
 
 export function createCard(): pokerCard {
     const pokerCards: pokerCard = [];
@@ -17,16 +17,36 @@ export function createCard(): pokerCard {
         for (const c of colorArr) {
             pokerCards.push({
                 value: v,
-                color: c
-            })
+                color: c,
+                getString() {
+                    return this.color + this.value
+                }
+            } as poker)
         }
     }
+    // 添加大小王
+    let jokerCard: joker = {
+        type: 'big',
+        getString() {
+            return 'Joker';
+        }
+    }
+    pokerCards.push(jokerCard);
+    jokerCard = {
+        type: 'small',
+        getString() {
+            return 'joker';
+        }
+    }
+    pokerCards.push(jokerCard);
     return pokerCards;
 }
 
 
 export function printCard(poker: pokerCard):void {
+    let result = '\n';
     poker.forEach(item => {
-        console.log(item.color + item.value);
+        result += item.getString();
     })
+    console.log(result + '\t');
 }
